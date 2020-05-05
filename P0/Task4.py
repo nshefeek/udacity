@@ -8,9 +8,31 @@ with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
 
+texts_sender = set()
+texts_receiver = set()
+
+for i in range(len(texts)):
+    texts_sender.add(texts[i][0])
+    texts_receiver.add(texts[i][1])
+
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
+
+a_party = set()
+b_party = set()
+
+for i in range(len(calls)):
+    a_party.add(calls[i][0])
+    b_party.add(calls[i][1])
+
+non_telemarketers = texts_sender | texts_receiver | b_party
+telemarketers = set()
+
+for i in a_party:
+    if i not in non_telemarketers:
+        telemarketers.add(i)
+print("These numbers could be telemarketers: \n {}".format('\n'.join(sorted(telemarketers))))
 
 """
 TASK 4:

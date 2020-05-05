@@ -3,6 +3,7 @@ Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
 import csv
+import re
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -11,6 +12,30 @@ with open('texts.csv', 'r') as f:
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
+
+area_codes = set()
+mobile_prefixes = set()
+count = 0
+count_bangalore = 0
+
+for i in range(len(calls)):
+    if calls[i][0].startswith('(080)'):
+        count_bangalore += 1
+        if calls[i][1].startswith('(080)'):
+            count += 1
+        if calls[i][1].startswith('('):
+            code = re.match(r'\((\d+)\)', calls[i][1]).group(1)
+            area_codes.add(code)
+        elif not calls[i][1].startswith('140'):
+            mobile_prefixes.add(calls[i][1][:4])
+
+print("The numbers called by people in Bangalore have codes:\n{}"
+      .format('\n'.join(sorted(area_codes | mobile_prefixes))))
+
+percent = count / count_bangalore
+
+print(f"{percent * 100:.2f} percent of calls from fixed lines in Bangalore are calls \
+to other fixed lines in Bangalore.")
 
 """
 TASK 3:
