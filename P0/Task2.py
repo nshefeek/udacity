@@ -13,12 +13,16 @@ with open('calls.csv', 'r') as f:
 
 number_dict = dict()
 for i in range(len(calls)):
-     if calls[i][0] not in number_dict or calls[i][1] not in number_dict:
-         number_dict[calls[i][0]] = int(calls[i][-1])
-         number_dict[calls[i][1]] = int(calls[i][-1])
-     else:
+    if calls[i][0] not in number_dict:
+        number_dict[calls[i][0]] = int(calls[i][-1])
+    else:
          number_dict[calls[i][0]] += int(calls[i][-1])
+
+    if calls[i][1] not in number_dict:
+        number_dict[calls[i][1]] = int(calls[i][-1])
+    else:
          number_dict[calls[i][1]] += int(calls[i][-1])
+
 
 max_duration = 0
 for number, duration in number_dict.items():

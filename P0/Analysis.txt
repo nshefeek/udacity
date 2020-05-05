@@ -1,0 +1,12 @@
+Time Complexity Analysis for each Tasks:
+========================================
+
+Task 0 - Constant time complexity O(1), since items were retrieved from lists using indexing.
+
+Task 1 - Linear time complexity O(n), there are two for loops involved which iterates through whole of the inputs. Therefore the execution time is around sum of the lengths of both inputs.
+
+Task 2 - Same as Task 1
+
+Task 3 - Here there is a for loop which iterates through the entire input, hence linear time complexity, O(n)
+
+Task 4 - Same as Task 1
