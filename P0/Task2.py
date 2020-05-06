@@ -12,16 +12,9 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)
 
 number_dict = dict()
-for i in range(len(calls)):
-    if calls[i][0] not in number_dict:
-        number_dict[calls[i][0]] = int(calls[i][-1])
-    else:
-         number_dict[calls[i][0]] += int(calls[i][-1])
-
-    if calls[i][1] not in number_dict:
-        number_dict[calls[i][1]] = int(calls[i][-1])
-    else:
-         number_dict[calls[i][1]] += int(calls[i][-1])
+for call in calls:
+    number_dict[call[0]] = number_dict.get(call[0], 0) + int(call[-1])
+    number_dict[call[1]] = number_dict.get(call[1], 0) + int(call[-1])
 
 
 max_duration = 0

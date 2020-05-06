@@ -7,6 +7,6 @@ Task 1 - Linear time complexity O(n), there are two for loops involved which ite
 
 Task 2 - Same as Task 1
 
-Task 3 - Here there is a for loop which iterates through the entire input, hence linear time complexity, O(n)
+Task 3 - Here there is a for loop which iterates through the entire input, hence linear time complexity, O(n). Since we are using Python's  inbuilt sorted method, which is employing Timsort it has a worst case time complexity of O(nlogn). Hence time complexity for this task is log-linear O(nlogn)
 
-Task 4 - Same as Task 1
+Task 4 - Same as Task 3

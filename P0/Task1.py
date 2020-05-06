@@ -2,10 +2,7 @@
 Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
-import time
 import csv
-
-start = time.time()
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -31,7 +28,6 @@ for i in range(len(calls)):
 
 all_numbers = a_party | b_party | texts_sender | texts_receiver
 print(f"There are {len(all_numbers)} different telephone numbers in the records.")
-end = time.time()
 print(f"Execution time is {end - start:.4f} seconds")
 """
 TASK 1:
